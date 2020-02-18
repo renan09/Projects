@@ -1,0 +1,22 @@
+{% extends 'myblogapp/myblogbase.html' %}
+
+{% block content %} 
+
+<div class="container-fluid">
+         <div class="card">
+        <div class="card-header">
+            Social
+        </div>
+        {% load static %}
+        <img class="img-fluid"  src="{% static "Social_blog3.jpg" %}" alt="Responsive image">
+        <div class="card-body">
+          <h5 class="card-title">Welcome</h5>
+          <p class="card-text">You can connect me by clicking on below links.</p>
+            <a href="https://twitter.com/lvnaren" class="btn btn-primary">Tweet</a>
+            <a href="https://instagram.com/lvnaren" class="btn btn-primary">Connect to Insta</a>
+            <a href="https://facebook.com/Naren Prakash" class="btn btn-primary">Connect on Facebook</a>
+        </div>
+      </div>
+      
+</div>
+{% endblock %}

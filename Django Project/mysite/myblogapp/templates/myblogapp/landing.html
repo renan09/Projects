@@ -1,0 +1,22 @@
+{% extends 'myblogapp/myblogbase.html' %}
+
+{% block content %} 
+
+<div class="container-fluid">
+         <div class="card">
+        <div class="card-header">
+            Home
+        </div>
+        {% load static %}
+       
+        <div class="card-body">
+          <h5 class="card-title">Welcome</h5>
+          <p class="card-text">My Name is Naren and this is my blog.
+            I share a lot of tech stuff, blended with some philosophy and movies.</p>
+            <a href="/myblogapp/blogposts" class="btn btn-primary">My Blog</a>
+        </div>
+        <img class="img-fluid"  src="{% static "image6.jpg" %}" alt="Responsive image">
+      </div>
+      
+</div>
+{% endblock %}

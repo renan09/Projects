@@ -1,0 +1,29 @@
+{% extends 'myblogapp/myblogbase.html' %}
+
+{% block content %} 
+
+<div class="container-fluid">
+         <div class="card">
+        <div class="card-header">
+            Blogs
+        </div>
+        {% load static %}
+        <div class="row justify-content-left">          
+              
+                  
+          {% if latest_blog_posts %}
+              <ul>
+              {% for blogs in latest_blog_posts %}
+             <!-- Modal Ends<li><a href="/myblogapp/blogposts/{{blogs.blog_id}}/">{{ blogs.blog_Name }}</a></li>-->
+              <li><a href="{% url 'myblogapp:blogpost' blogs.blog_id %}" >{{ blogs.blog_Name }}</a></li>
+              {% endfor %}
+              </ul>
+          {% else %}
+              <p>No blogs are available.</p>
+          {% endif %}
+          
+          </div>
+      </div>
+      
+</div>
+{% endblock %}

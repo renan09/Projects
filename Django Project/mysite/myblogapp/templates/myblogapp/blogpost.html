@@ -1,0 +1,89 @@
+{% extends 'myblogapp/myblogbase.html' %}
+
+{% block content %} 
+
+<div class="container-lg">
+         <div class="card">
+        <div class="card-header">
+          <blockquote class="blockquote text-center"> <h1>{{ blogpost.blog_Name }}</h1>
+          </blockquote>
+          </div>
+        {% load static %}
+        <div class="card-body">
+        
+             <p class="lead">
+        {{ blogpost.blog_Description}}
+      </p>
+    
+      </div>
+      <div class="alert alert-light" role="alert" text-align="right">
+        <a > created on {{blogpost.blog_date_created}}</a>
+      </div>
+    </div>
+  </div>
+      <br>
+    <div class="container-fluid">  
+      <a>Comments : </a>
+      
+      {% if comments %}
+      {% for comment in comments %}
+      <table class=".table table-sm">
+        <tbody>
+      <tr>
+      <td>
+        <a style="font-size:21px"> {{comment.comment_text}}</a>
+      </td>
+        <td> <a style="font-size:11px">comment by {{comment.comment_user}} </a> </td>
+      </tr>  
+    </tbody>
+  </table> 
+      {% endfor %}
+   
+  {% else %}
+      <p>No comments are available.</p>
+  {% endif %}
+  <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">
+    Comment
+  </button>
+ 
+  
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/myblogapp/blogposts/blogpost/blogpostcomment/{{blogpost.blog_id}}/" method="post">
+            {% csrf_token %} 
+            <div class="form-group">
+              <label for="comment" class="col-form-label">Comment:</label>
+              <textarea class="form-control" name="comment" id="comment"></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Post</button>
+            </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <!-- Modal Ends-->
+</div>
+  <div class=container-fluid>  
+    <br>
+    <div class="card">
+      <a href="/myblogapp/blogposts"  class="btn btn-outline-dark" >Go back to MyBlogs</a>
+    </div>
+  
+    </div>
+  
+      
+{% endblock %}
